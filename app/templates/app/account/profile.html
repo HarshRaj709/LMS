@@ -1,0 +1,67 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Profile Update -->
+            <div class="collapse show" id="collapseProfileUpdate" data-bs-parent="#profileUpdateModal">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Your Profile</h5>
+                </div>
+
+                <div class="modal-body">
+                    <!-- Form Profile Update -->
+                    <form class="mb-5" action='{% url 'profile' %}' method='POST'>
+                        {% csrf_token %}
+
+                        <!-- First Name -->
+                        <div class="form-group mb-4">
+                            <label for="profileUpdateFirstName">
+                                First Name
+                            </label>
+                            <input type="text" name='first_name' class="form-control" id="profileUpdateFirstName" value="{{ form.first_name.value }}">
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="form-group mb-4">
+                            <label for="profileUpdateLastName">
+                                Last Name
+                            </label>
+                            <input type="text" name='last_name' class="form-control" id="profileUpdateLastName" value="{{ form.last_name.value }}">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group mb-4">
+                            <label for="profileUpdateEmail">
+                                Email Address
+                            </label>
+                            <input type="email" name='email' class="form-control" id="profileUpdateEmail" value="{{ form.email.value }}" readonly>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="form-group mb-4">
+                            <label for="profileUpdateUsername">
+                                Username
+                            </label>
+                            <input type="text" name='username' class="form-control" id="profileUpdateUsername" value="{{ form.username.value }}" readonly>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group mb-4">
+                            <label for="profileUpdatePassword">
+                                Password
+                            </label>
+                            <input type="password" name='password' class="form-control" placeholder="Fill only if you want to change password otherwise leave">
+                        </div>
+
+                        <!-- Submit -->
+                        <button class="btn btn-block btn-primary" type="submit">
+                            UPDATE PROFILE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
